@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 5.0f;
+    [SerializeField] private float speed;
     [SerializeField] private float horizontalMultiplier = 2.0f;
     private Rigidbody _rb;
     private float _horizontalInput;
@@ -22,5 +22,10 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         _horizontalInput = Input.GetAxisRaw("Horizontal");
+    }
+
+    public void StartRunning()
+    {
+        speed = 5.0f;
     }
 }

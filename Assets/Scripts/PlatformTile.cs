@@ -9,11 +9,6 @@ public class PlatformTile : MonoBehaviour
         platformSpawner = GameObject.FindObjectOfType<PlatformSpawner>();
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void OnTriggerExit(Collider other)
     {
         platformSpawner.SpawnPlatform();
