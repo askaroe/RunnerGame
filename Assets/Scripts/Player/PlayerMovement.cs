@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 8.0f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundMask;
+    [SerializeField] private int currentLine;
 
     private void Awake()
     {
@@ -28,13 +29,15 @@ public class PlayerMovement : MonoBehaviour
     private void Movement()
     {
         Vector3 forwardMove = transform.forward * (speed * Time.deltaTime);
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && currentLine < 1)
         {
             _rb.MovePosition(transform.position + new Vector3(-_lineDifference, 0, 0));
+            currentLine++;
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D) && currentLine > -1)
         {
             _rb.MovePosition(transform.position + new Vector3(_lineDifference, 0, 0));
+            currentLine--;
         }
         _rb.MovePosition(_rb.position + forwardMove);
     }
