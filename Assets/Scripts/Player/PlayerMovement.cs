@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         _rb.velocity = new Vector3(_rb.velocity.x, jumpForce, _rb.velocity.z);
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         Debug.Log(Physics.CheckSphere(groundCheck.position, 0.1f, groundMask));
         return Physics.CheckSphere(groundCheck.position, .1f, groundMask);

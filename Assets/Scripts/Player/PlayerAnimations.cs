@@ -13,4 +13,9 @@ public class PlayerAnimations : MonoBehaviour
     {
         _playerAnimator.SetTrigger("Run");
     }
+
+    public void JumpAnimation(bool state)
+    {
+        _playerAnimator.SetBool("Jump", state);
+    }
 }
