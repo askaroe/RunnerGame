@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 821733686444870571}
   - component: {fileID: 7097121648667050722}
   - component: {fileID: 8582603633344188144}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 4660874625628298408}
   - component: {fileID: 4681808494639597008}
   - component: {fileID: 6102928932365610697}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1389874794425639366}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NextSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 1434975503782191887}
   - component: {fileID: 1224054249627887074}
   - component: {fileID: 7686347076642529725}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 188460920168358857}
   - component: {fileID: 2063478111168396806}
   - component: {fileID: 3377182335111686413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,9 +464,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5236198499328271423}
-  - component: {fileID: -491296462440352246}
   - component: {fileID: -1518351743482734258}
-  m_Layer: 0
+  - component: {fileID: 8544747442006434977}
+  m_Layer: 6
   m_Name: PlatformType_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,18 +493,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-491296462440352246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7734524277208311611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e155134297195b74a9eb9e90452046bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &-1518351743482734258
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -524,5 +512,17 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10, y: 10, z: 40}
+  m_Size: {x: 10, y: 1, z: 40}
   m_Center: {x: 0, y: 0, z: 20}
+--- !u!114 &8544747442006434977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7734524277208311611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e155134297195b74a9eb9e90452046bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

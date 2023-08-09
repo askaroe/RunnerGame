@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float horizontalMultiplier = 2.0f;
     private Rigidbody _rb;
     private float _lineDifference = 2.2f;
+    [SerializeField] private float jumpForce = 8.0f;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundMask;
 
     private void Awake()
     {
@@ -16,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Movement();
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
+            Jump();
+        }
     }
 
     private void Movement()
@@ -32,8 +39,19 @@ public class PlayerMovement : MonoBehaviour
         _rb.MovePosition(_rb.position + forwardMove);
     }
 
+    private void Jump()
+    {
+        _rb.velocity = new Vector3(_rb.velocity.x, jumpForce, _rb.velocity.z);
+    }
+
+    private bool IsGrounded()
+    {
+        Debug.Log(Physics.CheckSphere(groundCheck.position, 0.1f, groundMask));
+        return Physics.CheckSphere(groundCheck.position, .1f, groundMask);
+    }
+
     public void StartRunning()
     {
-        speed = 5.0f;
+        speed = 8.0f;
     }
 }

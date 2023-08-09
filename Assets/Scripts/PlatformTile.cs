@@ -12,6 +12,6 @@ public class PlatformTile : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         platformSpawner.SpawnPlatform();
-        Destroy(this.gameObject, 2f);
+        Destroy(this.gameObject, 6f);
     }
 }
