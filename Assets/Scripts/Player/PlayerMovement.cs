@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private int currentLine;
+    [SerializeField] private bool isSliding;
 
     private void Awake()
     {
@@ -24,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
         }
+        if (Input.GetKeyDown(KeyCode.S) && IsGrounded())
+        {
+            StartCoroutine(SlidingCoolDown());
+        }
+        Debug.Log(isSliding);
     }
 
     private void Movement()
@@ -49,12 +56,23 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsGrounded()
     {
-        Debug.Log(Physics.CheckSphere(groundCheck.position, 0.1f, groundMask));
         return Physics.CheckSphere(groundCheck.position, .1f, groundMask);
     }
 
     public void StartRunning()
     {
         speed = 8.0f;
+    }
+
+    public bool StartSliding()
+    {
+        return isSliding;
+    }
+
+    IEnumerator SlidingCoolDown()
+    {
+        isSliding = true;
+        yield return new WaitForSeconds(0.8f);
+        isSliding = false;
     }
 }

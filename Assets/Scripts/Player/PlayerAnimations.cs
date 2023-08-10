@@ -18,4 +18,9 @@ public class PlayerAnimations : MonoBehaviour
     {
         _playerAnimator.SetBool("Jump", state);
     }
+
+    public void SlideAnimation(bool state)
+    {
+        _playerAnimator.SetBool("Slide", state);
+    }
 }

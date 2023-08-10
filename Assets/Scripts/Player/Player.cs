@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
             _playerMovement.StartRunning();
         }
         _playerAnimations.JumpAnimation(!_playerMovement.IsGrounded());
+        _playerAnimations.SlideAnimation(_playerMovement.StartSliding());
     }
 
 
