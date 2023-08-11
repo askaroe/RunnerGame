@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private int currentLine;
     [SerializeField] private bool isSliding;
+    private bool isLost;
 
     private void Awake()
     {
@@ -21,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (isLost) return;
+
         Movement();
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
@@ -30,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(SlidingCoolDown());
         }
-        Debug.Log(isSliding);
     }
 
     private void Movement()
@@ -67,6 +69,12 @@ public class PlayerMovement : MonoBehaviour
     public bool StartSliding()
     {
         return isSliding;
+    }
+
+    public void StopRunning()
+    {
+        speed = 0;
+        isLost = true;
     }
 
     IEnumerator SlidingCoolDown()

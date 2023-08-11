@@ -23,4 +23,9 @@ public class PlayerAnimations : MonoBehaviour
     {
         _playerAnimator.SetBool("Slide", state);
     }
+
+    public void LoseAnimation()
+    {
+        _playerAnimator.SetTrigger("Lose");
+    }
 }

@@ -24,5 +24,11 @@ public class Player : MonoBehaviour
         _playerAnimations.SlideAnimation(_playerMovement.StartSliding());
     }
 
+    public void Lose()
+    {
+        _playerMovement.StopRunning();
+        _playerAnimations.LoseAnimation();
+    }
+
 
 }
