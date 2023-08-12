@@ -16,7 +16,8 @@ public class PlatformSpawner : MonoBehaviour
 
     public void SpawnPlatform()
     {
-        GameObject temp = Instantiate(groundPlatform, _nextSpawnPoint, Quaternion.identity);
+        int platformNumber = (int)Random.Range(0, platformTiles.Length);
+        GameObject temp = Instantiate(platformTiles[platformNumber], _nextSpawnPoint, Quaternion.identity);
         _nextSpawnPoint = temp.transform.GetChild(0).transform.position;
     }
 }
