@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     private PlayerAnimations _playerAnimations;
     private PlayerMovement _playerMovement;
     private bool _isStarted;
+    private int _coinsCollected;
 
     private void Awake()
     {
@@ -30,5 +31,10 @@ public class Player : MonoBehaviour
         _playerAnimations.LoseAnimation();
     }
 
+    public void CoinCollected()
+    {
+        _coinsCollected += 1;
+        UIManager.Instance.CoinsCollectedTextUpdate(_coinsCollected);
+    }
 
 }

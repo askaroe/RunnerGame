@@ -12,6 +12,7 @@ public class Coin : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            other.GetComponent<Player>().CoinCollected();
             Destroy(this.gameObject);
         }
     }
