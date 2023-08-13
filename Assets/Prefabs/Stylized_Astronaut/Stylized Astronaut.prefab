@@ -783,6 +783,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   horizontalMultiplier: 2
+  jumpForce: 8
+  groundCheck: {fileID: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  currentLine: 0
+  isSliding: 0
+  jumpSound: {fileID: 0}
+  slideSound: {fileID: 0}
 --- !u!54 &3158592090833724025
 Rigidbody:
   m_ObjectHideFlags: 0

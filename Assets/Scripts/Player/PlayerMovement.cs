@@ -12,7 +12,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private int currentLine;
     [SerializeField] private bool isSliding;
-    private bool isLost;
+    private bool _isLost;
+    private bool _isStarted;
+
+    [SerializeField] private AudioSource jumpSound;
+    [SerializeField] private AudioSource slideSound;
 
     private void Awake()
     {
@@ -22,16 +26,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (isLost) return;
+        if (_isLost) return;
 
-        Movement();
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if (_isStarted)
         {
-            Jump();
-        }
-        if (Input.GetKeyDown(KeyCode.S) && IsGrounded())
-        {
-            StartCoroutine(SlidingCoolDown());
+            Movement();
+            if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+            {
+                Jump();
+            }
+            if (Input.GetKeyDown(KeyCode.S) && IsGrounded())
+            {
+                StartCoroutine(SlidingCoolDown());
+            }
         }
     }
 
@@ -54,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         _rb.velocity = new Vector3(_rb.velocity.x, jumpForce, _rb.velocity.z);
+        jumpSound.Play();
     }
 
     public bool IsGrounded()
@@ -64,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
     public void StartRunning()
     {
         speed = 8.0f;
+        _isStarted = true;
     }
 
     public bool StartSliding()
@@ -75,12 +84,13 @@ public class PlayerMovement : MonoBehaviour
     {
         speed = 0;
         _rb.isKinematic = true; // turns off players physics
-        isLost = true;
+        _isLost = true;
     }
 
     IEnumerator SlidingCoolDown()
     {
         isSliding = true;
+        slideSound.Play();
         yield return new WaitForSeconds(0.8f);
         isSliding = false;
     }

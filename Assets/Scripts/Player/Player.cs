@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     private bool _isStarted;
     private int _coinsCollected;
 
+    [SerializeField] private AudioSource collectCoinSound;
+    [SerializeField] private AudioSource loseSound;
+
     private void Awake()
     {
         _playerAnimations = GetComponent<PlayerAnimations>();
@@ -30,6 +33,7 @@ public class Player : MonoBehaviour
     {
         _playerMovement.StopRunning();
         _playerAnimations.LoseAnimation();
+        loseSound.Play();
         UIManager.Instance.GameOverPopUp(_coinsCollected);
         GameManager.Instance.GameOver();
     }
@@ -37,6 +41,7 @@ public class Player : MonoBehaviour
     public void CoinCollected()
     {
         _coinsCollected += 1;
+        collectCoinSound.Play();
         UIManager.Instance.CoinsCollectedTextUpdate(_coinsCollected);
     }
 
