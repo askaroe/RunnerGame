@@ -15,14 +15,15 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.KeypadEnter) && !_isStarted)
-        {
-            _isStarted = true;
-            _playerAnimations.StartRunAnimation();
-            _playerMovement.StartRunning();
-        }
         _playerAnimations.JumpAnimation(!_playerMovement.IsGrounded());
         _playerAnimations.SlideAnimation(_playerMovement.StartSliding());
+    }
+
+    public void StartGame()
+    {
+        _isStarted = true;
+        _playerAnimations.StartRunAnimation();
+        _playerMovement.StartRunning();
     }
 
     public void Lose()

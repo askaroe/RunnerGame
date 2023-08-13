@@ -74,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
     public void StopRunning()
     {
         speed = 0;
+        _rb.isKinematic = true; // turns off players physics
         isLost = true;
     }
 
