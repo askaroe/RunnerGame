@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if(_instance == null)
+            if (_instance == null)
             {
                 Debug.LogError("GameManager instance is NULL!");
             }
@@ -28,11 +28,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private GameObject startGameButton;
     [SerializeField] private GameObject gameOverPopUp;
+    [SerializeField] private GameObject pauseMenuButton;
+    [SerializeField] private GameObject pauseMenuPanel;
 
     public void StartGameButton()
     {
         player.StartGame();
+        pauseMenuButton.SetActive(true);
         startGameButton.SetActive(false);
+    }
+
+    public void PauseMenuButton()
+    {
+        pauseMenuPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void GameOver()
@@ -43,10 +52,18 @@ public class GameManager : MonoBehaviour
     public void RestartGameButton()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     public void QuitButton()
     {
         Application.Quit();
+        Time.timeScale = 1;
+    }
+
+    public void ResumeGameButton()
+    {
+        pauseMenuPanel.SetActive(false);
+        Time.timeScale = 1;
     }
 }
