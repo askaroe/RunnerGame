@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,10 +27,26 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Player player;
     [SerializeField] private GameObject startGameButton;
+    [SerializeField] private GameObject gameOverPopUp;
 
     public void StartGameButton()
     {
         player.StartGame();
         startGameButton.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        gameOverPopUp.SetActive(true);
+    }
+
+    public void RestartGameButton()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
     }
 }

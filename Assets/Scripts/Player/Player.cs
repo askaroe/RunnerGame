@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     {
         _playerMovement.StopRunning();
         _playerAnimations.LoseAnimation();
+        UIManager.Instance.GameOverPopUp(_coinsCollected);
+        GameManager.Instance.GameOver();
     }
 
     public void CoinCollected()
