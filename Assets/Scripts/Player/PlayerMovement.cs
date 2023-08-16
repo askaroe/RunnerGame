@@ -31,11 +31,11 @@ public class PlayerMovement : MonoBehaviour
         if (_isStarted)
         {
             Movement();
-            if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+            if (SwipeManager.swipeUp && IsGrounded())
             {
                 Jump();
             }
-            if (Input.GetKeyDown(KeyCode.S) && IsGrounded())
+            if (SwipeManager.swipeDown && IsGrounded())
             {
                 StartCoroutine(SlidingCoolDown());
             }
@@ -45,12 +45,12 @@ public class PlayerMovement : MonoBehaviour
     private void Movement()
     {
         Vector3 forwardMove = transform.forward * (speed * Time.deltaTime);
-        if (Input.GetKeyDown(KeyCode.A) && currentLine < 1)
+        if (SwipeManager.swipeLeft && currentLine < 1)
         {
             _rb.MovePosition(transform.position + new Vector3(-_lineDifference, 0, 0));
             currentLine++;
         }
-        else if (Input.GetKeyDown(KeyCode.D) && currentLine > -1)
+        else if (SwipeManager.swipeRight && currentLine > -1)
         {
             _rb.MovePosition(transform.position + new Vector3(_lineDifference, 0, 0));
             currentLine--;
