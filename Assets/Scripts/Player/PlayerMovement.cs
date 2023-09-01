@@ -87,6 +87,11 @@ public class PlayerMovement : MonoBehaviour
         _isLost = true;
     }
 
+    public void IncreaseSpeed()
+    {
+        speed += 3.0f;
+    }
+
     IEnumerator SlidingCoolDown()
     {
         isSliding = true;
