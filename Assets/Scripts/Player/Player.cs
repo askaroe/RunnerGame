@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -6,6 +7,7 @@ public class Player : MonoBehaviour
     private PlayerMovement _playerMovement;
     private bool _isStarted;
     private int _coinsCollected;
+    private int _highScore;
 
     [SerializeField] private AudioSource collectCoinSound;
     [SerializeField] private AudioSource loseSound;
@@ -17,6 +19,12 @@ public class Player : MonoBehaviour
     {
         _playerAnimations = GetComponent<PlayerAnimations>();
         _playerMovement = GetComponent<PlayerMovement>();
+    }
+
+    private void Start()
+    {
+        _highScore = PlayerPrefs.GetInt("highScore", 0);
+        UIManager.Instance.HighScoreTextUpdate(_highScore);
     }
 
     private void Update()
@@ -48,6 +56,12 @@ public class Player : MonoBehaviour
         _coinsCollected += 1;
         collectCoinSound.Play();
         UIManager.Instance.CoinsCollectedTextUpdate(_coinsCollected);
+        if(_coinsCollected > _highScore)
+        {
+            _highScore = _coinsCollected;
+            PlayerPrefs.SetInt("highScore", _highScore);
+            UIManager.Instance.HighScoreTextUpdate(_highScore);
+        }
     }
 
     private void IncreasePlayerSpeed()

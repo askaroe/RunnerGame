@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Text coinsCollectedText;
     [SerializeField] private Text coinsCollectedPopUpText;
+    [SerializeField] private Text highScoreText;
 
     public void CoinsCollectedTextUpdate(int coins)
     {
@@ -35,5 +36,10 @@ public class UIManager : MonoBehaviour
     public void GameOverPopUp(int coins)
     {
         coinsCollectedPopUpText.text = "Coins collected: " + coins.ToString();
+    }
+
+    public void HighScoreTextUpdate(int highScore)
+    {
+        highScoreText.text = "High score: " + highScore.ToString();
     }
 }
